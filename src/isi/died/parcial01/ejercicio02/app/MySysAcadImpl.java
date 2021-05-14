@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import isi.died.parcial01.ejercicio02.db.BaseDeDatos;
+import isi.died.parcial01.ejercicio02.db.BaseDeDatosExcepcion;
 import isi.died.parcial01.ejercicio02.dominio.*;
 
 
@@ -39,8 +40,12 @@ public class MySysAcadImpl implements MySysAcad {
 		d.agregarInscripcion(insc);
 		a.addCursada(insc);
 		m.addInscripcion(insc);
-		// DESCOMENTAR Y gestionar excepcion
-		// DB.guardar(insc);
+		try {
+			db.guardar(e)
+			}
+			catch(BaseDeDatosExcepcion exception) {
+			   System.out.println("El alumno no se puede inscribir por un problema en la base de datos");
+			}
 	}
 
 	@Override
@@ -49,8 +54,13 @@ public class MySysAcadImpl implements MySysAcad {
 		a.addExamen(e);
 		d.agregarExamen(e);
 		m.addExamen(e);
-		// DESCOMENTAR Y gestionar excepcion
-		// DB.guardar(e);
+		try {
+			db.guardar(e)
+			}
+			catch(BaseDeDatos exception) {
+			   System.out.println("El alumno no se puede inscribir por un problema en la base de datos");
+			}
+		}
 	}
 	
 
